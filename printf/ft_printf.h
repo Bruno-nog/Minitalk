@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brunogue <brunogue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/28 18:08:59 by brunogue          #+#    #+#             */
-/*   Updated: 2025/03/07 16:26:07 by brunogue         ###   ########.fr       */
+/*   Created: 2024/11/08 15:45:41 by brunogue          #+#    #+#             */
+/*   Updated: 2024/11/20 15:03:34 by brunogue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include "printf/ft_printf.h"
+# include <stdarg.h>
 
-//SERVER
-void	clean_exit(int signum);
-void	ft_receive(int signal, siginfo_t *info, void *context);
-void	add_char_to_message(char c, char **message);
-char	*append_char(char *msg, char c);
-//UTILS
-int		ft_strlen(char *str);
-char	*ft_strcpy(char *dest, const char *src);
+int		ft_putchar(char c);
+int		ft_putstr(char *s);
+int		ft_putnbr_u(unsigned int n);
+int		ft_hex(unsigned long n, const char *base);
+int		ft_putnbr(int n);
+void	ft_pointer_type(va_list args, int *count);
+void	ft_type_data(va_list args, int *count, const char *format, int *i);
+int		ft_printf(const char *format, ...);
 
 #endif

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brunogue <brunogue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/28 18:08:30 by brunogue          #+#    #+#             */
-/*   Updated: 2025/03/07 16:57:05 by brunogue         ###   ########.fr       */
+/*   Created: 2025/03/07 17:52:03 by brunogue          #+#    #+#             */
+/*   Updated: 2025/03/07 18:56:17 by brunogue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 static char	**ft_message_ptr(void)
 {
@@ -76,7 +76,6 @@ void	ft_receive(int signal, siginfo_t *info, void *context)
 	static int	bit_count = 0;
 	char		**message;
 
-	(void)info;
 	(void)context;
 	message = ft_message_ptr();
 	if (signal == SIGUSR2)
@@ -85,6 +84,11 @@ void	ft_receive(int signal, siginfo_t *info, void *context)
 	if (bit_count == 8)
 	{
 		add_char_to_message(c, message);
+		if (c == '\0')
+		{
+			if (kill(info->si_pid, SIGUSR1) == -1)
+				ft_printf("Failed to send ack\n");
+		}
 		bit_count = 0;
 		c = 0;
 	}

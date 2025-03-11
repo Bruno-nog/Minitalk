@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   minitalk_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brunogue <brunogue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/28 18:08:59 by brunogue          #+#    #+#             */
-/*   Updated: 2025/03/07 16:26:07 by brunogue         ###   ########.fr       */
+/*   Created: 2025/03/07 17:26:54 by brunogue          #+#    #+#             */
+/*   Updated: 2025/03/11 17:26:03 by brunogue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#ifndef MINITALK_BONUS_H
+# define MINITALK_BONUS_H
 
 # include <unistd.h>
 # include <signal.h>
 # include <stdlib.h>
-# include "printf/ft_printf.h"
+# include "../printf/ft_printf.h"
 
-//SERVER
-void	clean_exit(int signum);
+//SERVER BONUS
 void	ft_receive(int signal, siginfo_t *info, void *context);
-void	add_char_to_message(char c, char **message);
-char	*append_char(char *msg, char c);
+void	clean_exit(int signum);
+
 //UTILS
 int		ft_strlen(char *str);
 char	*ft_strcpy(char *dest, const char *src);
